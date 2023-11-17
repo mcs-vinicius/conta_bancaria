@@ -1,17 +1,30 @@
 package conta_bancaria;
 
 import java.util.Scanner;
-import conta_bancaria.util.*;
+
+import conta_bancaria.model.Conta;
+import conta_bancaria.util.Cores;
 
 public class Menu {
 	static Scanner leia = new Scanner(System.in);
 
 	public static void main(String[] args) {
 		int opcao = 0;
+		/*Criando Objetos da Classe Conta para teste*/
+		
+		Conta c1 = new Conta(1, 123, 1, "Geruncio Marcondes", 10000.0f );
+		c1.visualizar();
+		System.out.println("Exibir o Saldo: " + c1.getSaldo());
+		c1.setSaldo(20000.00f);
+		c1.visualizar();
+		c1.sacar(21000.00f);
+		c1.visualizar();
+		c1.depositar(5000.00f);
+		c1.visualizar();
 
 		while (opcao != 9) {
-			System.out.println(Cores.ANSI_CYAN_BACKGROUND_BRIGHT + Cores.TEXT_BLUE_BOLD + 
-							   "*************************************************");
+			System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_CYAN_BOLD
+					+ "*************************************************");
 			System.out.println("*              Churupitas Bank			*");
 			System.out.println("*************************************************");
 			System.out.println("*						*");
@@ -26,7 +39,7 @@ public class Menu {
 			System.out.println("*	9 - Sair				*");
 			System.out.println("*						*");
 			System.out.println("*************************************************");
-			System.out.println("Entre com a opção desejada:                      "+ Cores.TEXT_RESET);
+			System.out.println("Entre com a opção desejada:                      " + Cores.TEXT_RESET);
 			opcao = leia.nextInt();
 
 			if (opcao == 9) {
@@ -60,15 +73,24 @@ public class Menu {
 				System.out.println("Transferir Valores entre Conta");
 				break;
 			default:
-				System.out.println("Opção invalida, Digite uma opção valida.");
+				System.out.println(Cores.ANSI_RED_BACKGROUND +
+						"*************************************************");
+				System.out.println("*   Opção invalida, Digite uma opção valida.    *");
+				System.out.println("*************************************************\n" + Cores.TEXT_RESET);
 				break;
 			}
 		}
 	}
 
 	static void sobre() {
-		System.out.println("Sistema Finalizado!");
-		System.out.println("\nProjeto - Conta Bancaria");
-		System.out.println("By: Vinicius M C Silva");
+		System.out.println(Cores.ANSI_GREEN_BACKGROUND_BRIGHT + Cores.TEXT_BLUE_BOLD +
+							"*************************************************");
+		System.out.println("*		Sistema Finalizado!		*");
+		System.out.println("*************************************************");
+		System.out.println("*						*");
+		System.out.println("*	     Projeto - Conta Bancaria		*");	
+		System.out.println("*	     By: Vinicius M C Silva		*");
+		System.out.println("*						*");
+		System.out.println("*************************************************");
 	}
 }
