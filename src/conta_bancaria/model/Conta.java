@@ -54,7 +54,7 @@ public class Conta {
 	// Metodo Sacar
 	public boolean sacar (float valor) {
 		if(this.getSaldo()  < valor) {
-			System.out.println("\nSaldo Insuficiente!");
+			System.out.println("\nSaldo Insuficiente!\n");
 			return false;
 		}
 		this.setSaldo(this.getSaldo() - valor);
@@ -75,7 +75,7 @@ public class Conta {
 		case 2 -> tipo = "Conta Poupança";
 		}
 		System.out.println(Cores.ANSI_CYAN_BACKGROUND_BRIGHT + Cores.TEXT_BLACK_BOLD
-				+ "\n\n*************************************************");
+				+ "*************************************************");
 		System.out.println("*              Dados da Conta			*");
 		System.out.println("*************************************************");
 		System.out.println("*	Numero da conta: " + this.numero + "			*");
@@ -83,6 +83,6 @@ public class Conta {
 		System.out.println("*	Tipo da Conta: " + tipo + "		*");
 		System.out.println("*	Titular: " + this.titular + "		*");
 		System.out.println("*	Saldo da conta: " + this.saldo + "			*");
-		System.out.println("*************************************************\n\n" + Cores.TEXT_RESET);
+		
 	}
 }

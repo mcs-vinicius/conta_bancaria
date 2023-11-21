@@ -2,7 +2,8 @@ package conta_bancaria;
 
 import java.util.Scanner;
 
-import conta_bancaria.model.Conta;
+import conta_bancaria.model.ContaCorrente;
+import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
 
 public class Menu {
@@ -10,17 +11,18 @@ public class Menu {
 
 	public static void main(String[] args) {
 		int opcao = 0;
-		/*Criando Objetos da Classe Conta para teste*/
 		
-		Conta c1 = new Conta(1, 123, 1, "Geruncio Marcondes", 10000.0f );
-		c1.visualizar();
-		System.out.println("Exibir o Saldo: " + c1.getSaldo());
-		c1.setSaldo(20000.00f);
-		c1.visualizar();
-		c1.sacar(21000.00f);
-		c1.visualizar();
-		c1.depositar(5000.00f);
-		c1.visualizar();
+		ContaCorrente cc1 = new ContaCorrente(3, 456 , 1,"Vinicius Monteiro", 10000.00f, 2000.00f);
+		cc1.visualizar();
+		cc1.sacar(11000.00f);
+		cc1.visualizar();
+		cc1.depositar(1000.00f);
+		cc1.visualizar();
+		
+		ContaPoupanca cc2 = new ContaPoupanca(4, 789, 2, "Clariosvaldo Tetax", 20000.00f, 21);
+		cc2.visualizar();
+		cc2.setAniverssario(10);
+		cc2.visualizar();
 
 		while (opcao != 9) {
 			System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_CYAN_BOLD
@@ -49,6 +51,7 @@ public class Menu {
 
 			switch (opcao) {
 			case 1:
+				
 				System.out.println("Criar Conta");
 				break;
 			case 2:
