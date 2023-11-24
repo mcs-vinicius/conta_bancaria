@@ -40,7 +40,6 @@ public class ContaController implements ContaRepository {
 		listaContas.add(conta);
 		System.out.println(Cores.ANSI_GREEN_BACKGROUND + Cores.TEXT_BLACK_BOLD + "Conta: " + conta.getNumero()
 				+ " Foi criada com sucesso!" + Cores.TEXT_RESET);
-
 	}
 
 	@Override
@@ -93,8 +92,8 @@ public class ContaController implements ContaRepository {
 
 	@Override
 	public void transferir(int numeroOrigem, int numeroDestino, float valor) {
-		Optional<Conta> contaOrigem = buscarNaCollection(numero);
-		Optional<Conta> contaDestino = buscarNaCollection(numero);
+		Optional<Conta> contaOrigem = buscarNaCollection(numeroOrigem);
+		Optional<Conta> contaDestino = buscarNaCollection(numeroDestino);
 
 		if (contaOrigem.isPresent()&& contaDestino.isPresent()) {
 			if (contaOrigem.get().sacar(valor) == true) {

@@ -1,7 +1,6 @@
 package conta_bancaria.util;
 
 public class Cores {
-	
 			//Reset Color
 			public static final String TEXT_RESET = "\u001B[0m";
 
@@ -74,5 +73,4 @@ public class Cores {
 			public static final String ANSI_PURPLE_BACKGROUND_BRIGHT = "\033[0;105m"; 
 			public static final String ANSI_CYAN_BACKGROUND_BRIGHT = "\033[0;106m";  
 			public static final String ANSI_WHITE_BACKGROUND_BRIGHT = "\033[0;107m";
-	
 }
