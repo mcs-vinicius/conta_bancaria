@@ -2,9 +2,11 @@ package conta_bancaria;
 
 import java.io.IOException;
 import java.util.InputMismatchException;
+import java.util.Optional;
 import java.util.Scanner;
 
 import conta_bancaria.controller.ContaController;
+import conta_bancaria.model.Conta;
 import conta_bancaria.model.ContaCorrente;
 import conta_bancaria.model.ContaPoupanca;
 import conta_bancaria.util.Cores;
@@ -97,7 +99,48 @@ public class Menu {
 				keyPress();
 				break;
 			case 4:
-				System.out.println("Atualizar Dados da Conta");
+				System.out.println(Cores.ANSI_GREEN_BACKGROUND + Cores.TEXT_BLACK_BOLD
+						+ "*************************************************");
+				System.out.println("*         Atualizar dados da Conta		*");
+				System.out.println("*************************************************");
+
+				System.out.println("\nDigite o numero da conta:");
+				numero = leia.nextInt();
+				
+				Optional<Conta> conta = contas.buscarNaCollection(numero);
+				if(conta.isPresent()) {
+					
+					System.out.println(Cores.ANSI_GREEN_BACKGROUND + Cores.TEXT_BLACK_BOLD + 
+							"Digite o numero da Agência: 			 ");
+					agencia = leia.nextInt();
+
+					System.out.println("Digite o Nome do titular: 			 ");
+					leia.skip("\\R");
+					titular = leia.nextLine();
+					
+					System.out.println("Digite o Saldo da conta: 			 ");
+					saldo = leia.nextFloat();
+					
+					tipo = conta.get().getTipo();
+					
+					switch (tipo) {
+					case 1 -> {
+						System.out.println("Digite o limite da conta: 			 " + Cores.TEXT_RESET);
+						limite = leia.nextFloat();
+						contas.atualizar(new ContaCorrente(numero, agencia, tipo, titular, saldo, limite));
+					}
+					case 2 -> {
+						System.out.println("Digite o Aniverssário da conta: 		 " + Cores.TEXT_RESET);
+						aniverssario = leia.nextInt();
+						contas.atualizar(
+								new ContaPoupanca(numero, agencia, tipo, titular, saldo, aniverssario));
+					}
+					}
+					
+				}else {
+					System.out.println("A Conta: "+ numero +" não foi encontrada!");
+				}
+				
 				keyPress();
 				break;
 			case 5:
