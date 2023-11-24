@@ -16,7 +16,7 @@ public class Menu {
 
 	public static void main(String[] args) {
 		ContaController contas = new ContaController();
-		int opcao = 0, numero = 0, agencia, tipo = 0, aniverssario = 0;
+		int opcao = 0, numero = 0, agencia, tipo = 0, aniverssario = 0, numeroDestino;
 		String titular;
 		float saldo, limite;
 
@@ -153,14 +153,48 @@ public class Menu {
 				break;
 			case 6:
 				System.out.println("Sacar");
+				
+				System.out.println("\nDigite o numero da conta:");
+				numero = leia.nextInt();
+				
+				System.out.println("\nDigite o valor do saque:");
+				saldo = leia.nextFloat();
+				
+				contas.sacar(numero, saldo);
+				
+				
 				keyPress();
 				break;
 			case 7:
 				System.out.println("Depositar");
+				
+				System.out.println("\nDigite o numero da conta:");
+				numero = leia.nextInt();
+				
+				System.out.println("\nDigite o valor a ser depositado:");
+				saldo = leia.nextFloat();
+				
+				contas.depositar(numero, saldo);
+				
 				keyPress();
 				break;
 			case 8:
 				System.out.println("Transferir Valores entre Conta");
+				System.out.println("\nDigite o numero da conta de Origem:");
+				numero = leia.nextInt();
+				
+				System.out.println("\nDigite o numero da conta de Destino:");
+				numeroDestino = leia.nextInt();
+				
+				System.out.println("\nDigite o valor a ser transferido:");
+				saldo = leia.nextInt();
+				
+				if(numero != numeroDestino) {
+				contas.transferir(numero, numeroDestino, saldo);
+				}else {
+					System.out.println("Os números das contas são iguais: ");
+				}
+				
 				keyPress();
 				break;
 			default:
