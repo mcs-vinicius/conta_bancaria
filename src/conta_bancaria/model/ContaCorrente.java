@@ -2,7 +2,7 @@ package conta_bancaria.model;
 
 import conta_bancaria.util.Cores;
 
-public class ContaCorrente  extends Conta{ // Extends permite eu Herdar os atributos da classe Conta, para utiliza-la aplico o construtor. 
+public class ContaCorrente extends Conta{ // Extends permite eu Herdar os atributos da classe Conta, para utiliza-la aplico o construtor. 
 	private float limite;
 	
 	public ContaCorrente(int numero, int agencia, int tipo, String titular, float saldo, float limite) {

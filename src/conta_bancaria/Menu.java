@@ -24,7 +24,7 @@ public class Menu {
 		ContaPoupanca cp1 = new ContaPoupanca(contas.gerarNumero(), 213, 2, "Clariosvaldo", 5000.00f, 10);
 		contas.cadastrar(cp1);
 
-		while (opcao != 9) {
+		while (opcao != 10) {
 			System.out.println(Cores.ANSI_BLACK_BACKGROUND + Cores.TEXT_CYAN_BOLD
 					+ "*************************************************");
 			System.out.println("*              Churupitas Bank			*");
@@ -38,7 +38,8 @@ public class Menu {
 			System.out.println("*	6 - Sacar				*");
 			System.out.println("*	7 - Depositar				*");
 			System.out.println("*	8 - Transferir Valores entre Conta	*");
-			System.out.println("*	9 - Sair				*");
+			System.out.println("*	9 - Listar por Nomes			*");
+			System.out.println("*	10 - Sair				*");
 			System.out.println("*						*");
 			System.out.println("*************************************************");
 			System.out.println("Entre com a opção desejada:                      " + Cores.TEXT_RESET);
@@ -49,9 +50,9 @@ public class Menu {
 				leia.nextLine();
 				opcao = 0;
 			}
-			if (opcao == 9) {
+			if (opcao == 10) {
 				sobre();
-				System.exit(9);
+				System.exit(10);
 			}
 
 			switch (opcao) {
@@ -213,6 +214,16 @@ public class Menu {
 					System.out.println("Os números das contas são iguais: ");
 				}
 
+				keyPress();
+				break;
+			case 9:
+				System.out.println("Consulta por titular ");
+				System.out.println("Digite o nome do titular:  ");
+				leia.skip("\\R");
+				titular = leia.nextLine();
+				
+				contas.procurarPorNome(titular);
+				
 				keyPress();
 				break;
 			default:
